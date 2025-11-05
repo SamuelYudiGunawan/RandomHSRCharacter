@@ -5,12 +5,16 @@ const ASSETS_BASE_URL = 'https://vizualabstract.github.io/StarRailStaticAPI/asse
 // Global variables
 let charactersData = {};
 let characterIds = [];
+let totalRandomizes = 0;
+let uniqueCharacters = new Set();
 
 // DOM Elements
 const loadingEl = document.getElementById('loading');
 const errorEl = document.getElementById('error');
 const characterCardEl = document.getElementById('character-card');
 const randomizeBtn = document.getElementById('randomize-btn');
+const totalRandomizesEl = document.getElementById('total-randomizes');
+const uniqueCharactersEl = document.getElementById('unique-characters');
 
 // Element colors mapping
 const elementColors = {
@@ -23,9 +27,47 @@ const elementColors = {
     'Imaginary': 'element-Imaginary'
 };
 
+// Load stats from localStorage
+function loadStats() {
+    const savedStats = localStorage.getItem('hsrRandomizerStats');
+    if (savedStats) {
+        const stats = JSON.parse(savedStats);
+        totalRandomizes = stats.totalRandomizes || 0;
+        uniqueCharacters = new Set(stats.uniqueCharacters || []);
+        updateStatsDisplay();
+    }
+}
+
+// Save stats to localStorage
+function saveStats() {
+    const stats = {
+        totalRandomizes: totalRandomizes,
+        uniqueCharacters: Array.from(uniqueCharacters)
+    };
+    localStorage.setItem('hsrRandomizerStats', JSON.stringify(stats));
+}
+
+// Update stats display
+function updateStatsDisplay() {
+    totalRandomizesEl.textContent = totalRandomizes;
+    const totalCharacters = characterIds.length;
+    uniqueCharactersEl.textContent = `${uniqueCharacters.size}/${totalCharacters}`;
+}
+
+// Add keyboard shortcut listener
+function setupKeyboardShortcuts() {
+    document.addEventListener('keydown', (event) => {
+        // Check if R key is pressed
+        if ((event.key === 'r' || event.key === 'R') && !randomizeBtn.disabled) {
+            displayRandomCharacter();
+        }
+    });
+}
+
 // Initialize the application
 async function init() {
     try {
+        loadStats();
         await loadCharacters();
         displayRandomCharacter();
         
@@ -35,6 +77,9 @@ async function init() {
         
         // Add event listener to randomize button
         randomizeBtn.addEventListener('click', displayRandomCharacter);
+        
+        // Setup keyboard shortcuts
+        setupKeyboardShortcuts();
     } catch (error) {
         console.error('Initialization error:', error);
         showError();
@@ -87,6 +132,12 @@ function getRandomCharacter() {
 // Display random character
 function displayRandomCharacter() {
     const character = getRandomCharacter();
+    
+    // Update stats
+    totalRandomizes++;
+    uniqueCharacters.add(character.id);
+    updateStatsDisplay();
+    saveStats();
     
     // Disable button during loading
     randomizeBtn.disabled = true;
