@@ -50,11 +50,24 @@
                     <button id="randomize-btn" class="randomize-btn">
                         🎲 Randomize Character
                     </button>
+                    
+                    <p class="keyboard-hint">💡 Tip: Press <kbd>R</kbd> to randomize</p>
                 </div>
             </div>
         </main>
 
         <footer>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number" id="total-randomizes">0</span>
+                    <span class="stat-label">Total Randomizes</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="unique-characters">0</span>
+                    <span class="stat-label">Unique Characters</span>
+                </div>
+            </div>
+            
             <p>Data provided by <a href="https://vizualabstract.github.io/StarRailStaticAPI/" target="_blank">StarRailStaticAPI</a></p>
             <p>Honkai: Star Rail © HoYoverse</p>
         </footer>
