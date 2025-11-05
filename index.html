@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honkai Star Rail Character Randomizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⭐ Honkai Star Rail Character Randomizer</h1>
+            <p class="subtitle">Discover random characters from the Astral Express!</p>
+        </header>
+
+        <main>
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Loading characters...</p>
+            </div>
+
+            <div id="error" class="error" style="display: none;">
+                <p>❌ Failed to load character data. Please try again.</p>
+            </div>
+
+            <div id="character-card" class="character-card" style="display: none;">
+                <div class="character-portrait">
+                    <img id="character-image" src="" alt="Character Portrait">
+                    <div class="rarity-stars" id="rarity-stars"></div>
+                </div>
+                
+                <div class="character-info">
+                    <h2 id="character-name">Character Name</h2>
+                    
+                    <div class="character-details">
+                        <div class="detail-item">
+                            <span class="label">Element:</span>
+                            <span id="character-element" class="value"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Path:</span>
+                            <span id="character-path" class="value"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Rarity:</span>
+                            <span id="character-rarity" class="value"></span>
+                        </div>
+                    </div>
+
+                    <button id="randomize-btn" class="randomize-btn">
+                        🎲 Randomize Character
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Data provided by <a href="https://vizualabstract.github.io/StarRailStaticAPI/" target="_blank">StarRailStaticAPI</a></p>
+            <p>Honkai: Star Rail © HoYoverse</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
