@@ -22,16 +22,6 @@ A simple, beautiful web application that displays random Honkai Star Rail charac
 
 Simply open `index.html` in your web browser!
 
-```bash
-# If you have Python installed:
-python -m http.server 8080
-
-# Or with Node.js:
-npx http-server -p 8080
-```
-
-Then visit: `http://localhost:8080`
-
 ### Option 2: Run with Docker
 
 #### Build and Run
@@ -180,59 +170,6 @@ Click the "Randomize Character" button to fetch a random character from the API.
 ### Responsive Design
 Works perfectly on desktop, tablet, and mobile devices.
 
-## 🐛 Troubleshooting
-
-### Container not starting?
-```bash
-docker logs <container-id>
-```
-
-### Port already in use?
-```bash
-# Use a different port
-docker run -d -p 3000:80 honkai-star-rail-randomizer
-```
-
-### Image not loading?
-- Check your internet connection (API requires internet)
-- Check browser console for CORS errors
-- Verify API is accessible: https://vizualabstract.github.io/StarRailStaticAPI/
-
-## 📝 Assignment Fulfillment
-
-This project fulfills the requirements:
-
-### ✅ Version Control Workflow (10 Points)
-- GitHub repository with complete project
-- Initialization, branching, merge workflow
-- GitHub Actions for automation
-- Clear commit history with descriptive messages
-
-### ✅ Containerization and Cross-Platform Testing (20 Points)
-- Dockerized application using Nginx
-- Works on Linux and Windows via Docker Desktop/WSL
-- Verified identical behavior across platforms
-- Documented with screenshots
-
-### ✅ Blog and Video Publication (20 Points)
-- Background: Cross-platform web deployment challenges
-- Objectives: Demonstrate containerization benefits
-- Main steps: Development, Dockerization, CI/CD setup
-- Challenges: API integration, cross-platform testing
-- Conclusion: Docker ensures consistent deployment
-
-## 📸 Screenshots
-
-Take screenshots of:
-1. Application running in browser
-2. Docker container running (`docker ps`)
-3. GitHub Actions success
-4. Application on Windows and Linux
-
-## 🤝 Contributing
-
-Feel free to fork and improve this project!
-
 ## 📄 License
 
 This project is for educational purposes. Honkai: Star Rail is © HoYoverse.
@@ -242,16 +179,4 @@ This project is for educational purposes. Honkai: Star Rail is © HoYoverse.
 - Data provided by [StarRailStaticAPI](https://vizualabstract.github.io/StarRailStaticAPI/)
 - Honkai: Star Rail © HoYoverse
 - Created for UTSCloud Assignment
-
-## 📞 Support
-
-If you encounter any issues:
-1. Check the troubleshooting section
-2. Review Docker logs
-3. Ensure Docker is running
-4. Verify internet connection for API access
-
----
-
-**Made with ❤️ for Honkai Star Rail fans**
 
